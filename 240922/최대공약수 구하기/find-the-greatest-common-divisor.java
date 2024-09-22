@@ -24,10 +24,11 @@ public class Main {
             c = b;
             d = a;
         }
-
+        int tmp;
         while (d != 0) {
-            c = c % d;
-            d = (int)c / d;
+            tmp = c % d;
+            c = d;
+            d = tmp;
         }
 
         return c;
