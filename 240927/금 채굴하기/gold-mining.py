@@ -33,7 +33,7 @@ def func(data, size, value):
                     break
                 else:
                     calculatedCount = calc(data, i, j, size)
-                    if calculatedCount * value > cost:
+                    if calculatedCount * value >= cost:
                         result = max(calculatedCount, result)
                     size += 1
     return result
