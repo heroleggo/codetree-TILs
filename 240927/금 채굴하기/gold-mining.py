@@ -23,7 +23,7 @@ def calc(data, r, c, size):
 
 def func(data, size, value):
     maxValue = getValue(data, value)
-    result = -1
+    result = 0
     for i in range(1, len(data) + 1):
         for j in range(1, len(data) + 1):
             size = 0
