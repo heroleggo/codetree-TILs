@@ -4,13 +4,9 @@ data = [int(x) for x in input().split()]
 
 data.sort()
 
-sum1 = 0
-sum2 = 0
+result = -1
 
-for i in range(n * 2):
-    if i % 2 == 0:
-        sum1 += data[i]
-    else:
-        sum2 += data[i]
+for i in range(n):
+    result = max(result, data[i] + data[2 * n - i - 1])
 
-print(max(sum1, sum2))
+print(result)
