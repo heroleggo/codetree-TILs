@@ -8,7 +8,7 @@ for i in range(int(n)):
     original.append(input())
 
 for word in original:
-    if t in word:
+    if word.startswith(t):
         data.append(word)
 
 data.sort()
