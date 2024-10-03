@@ -11,7 +11,7 @@ def partition(left, right):
     global data
     pivot = left
     i = left + 1
-    j = right - 1
+    j = right
     
     while i <= j:
         while data[i] < data[pivot]:
@@ -28,6 +28,6 @@ n = int(input())
 
 data = list(map(int, input().split()))
 
-quick(0, len(data))
+quick(0, len(data) - 1)
 
 print(' '.join([str(x) for x in data]))
