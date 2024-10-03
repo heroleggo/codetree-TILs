@@ -14,9 +14,9 @@ def partition(left, right):
     j = right
     
     while i <= j:
-        while data[i] < data[pivot] and i <= right:
+        while i <= right and data[i] < data[pivot]:
             i += 1
-        while data[j] > data[pivot] and j >= left:
+        while j >= left and data[j] > data[pivot]:
             j -= 1
         if i <= j:
             # swap
