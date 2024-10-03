@@ -22,7 +22,7 @@ def partition(left, right):
             # swap
             data[i], data[j] = data[j], data[i]
     data[pivot], data[j] = data[j], data[pivot]
-    return j + 1
+    return j
 
 n = int(input())
 
