@@ -21,6 +21,8 @@ def partition(left, right):
         if i <= j:
             # swap
             data[i], data[j] = data[j], data[i]
+            i += 1
+            j -= 1
     data[pivot], data[j] = data[j], data[pivot]
     return j
 
