@@ -1,3 +1,3 @@
 [a, b] = list(map(int, input().split()))
 
-print(round((a + b) / (a - b), 2))
+print('{0:.2f}'.format(round((a + b) / (a - b), 2)))
