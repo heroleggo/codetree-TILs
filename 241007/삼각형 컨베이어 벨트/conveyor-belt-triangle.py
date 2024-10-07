@@ -15,6 +15,7 @@ for i in range(second):
         data[j] = data[j - 1]
     data[0] = tmp
 
-for i in range(3):
-    for j in range(n):
-        print(data[i * 3 + j], end=' ')
+result = [data[0:n], data[n:2 * n], data[2 * n:]]
+
+for i in result:
+    print(' '.join(i))
