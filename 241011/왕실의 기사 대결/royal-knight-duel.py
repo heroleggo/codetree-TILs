@@ -119,13 +119,23 @@ def do_command(command):
                     queue.append(i)
                 else:
                     blocked.append(i)
-    removal = set()
-    for index, p in enumerate(parents):
-        if index in blocked:
-            for item in p:
-                removal.add(item)
-    for item in list(removal):
-        candidate.discard(item)
+    # removal = set()
+    # for index, p in enumerate(parents):
+    #     if index in blocked:
+    #         for item in p:
+    #             removal.add(item)
+    # for item in list(removal):
+    #     candidate.discard(item)
+    blocked_set = set(blocked)
+    stack = list(blocked)
+    while stack:
+        b_idx = stack.pop()
+        for parent_idx in parents[b_idx]:
+            if parent_idx not in blocked_set:
+                blocked_set.add(parent_idx)
+                stack.append(parent_idx)
+        # 이동 취소 대상에서 모든 차단된 기사를 제거
+        candidate -= blocked_set
     # 찾은 직사각형 이동 및 체력 조정
     for candidate_index in list(candidate):
         [x, y, height, width, hp] = knights[candidate_index]
