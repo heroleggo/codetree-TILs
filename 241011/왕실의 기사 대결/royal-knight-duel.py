@@ -106,6 +106,8 @@ def do_command(command):
         candidate.add(idx)
         queue.append(idx)
         visited[idx] = 1
+    else:
+        return
     while queue:
         curr_idx = queue.popleft()
         for i, v in enumerate(knights):
@@ -135,7 +137,9 @@ def do_command(command):
                 blocked_set.add(parent_idx)
                 stack.append(parent_idx)
         # 이동 취소 대상에서 모든 차단된 기사를 제거
-        candidate -= blocked_set
+    candidate -= blocked_set
+    if idx not in candidate:
+        return
     # 찾은 직사각형 이동 및 체력 조정
     for candidate_index in list(candidate):
         [x, y, height, width, hp] = knights[candidate_index]
