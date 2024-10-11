@@ -38,8 +38,8 @@ def get_distance(start, target):
     return (tx - sx) ** 2 + (ty - sy) ** 2
 
 def find_santa_index(r, c):
-    for i in range(1, P):
-        if santa_x[i] == r and santa_y[i] == c:
+    for i in range(1, P + 1):
+        if santa_x[i] == r and santa_y[i] == c and santa_stunned[i] != -1:
             return i
     return -1
 
