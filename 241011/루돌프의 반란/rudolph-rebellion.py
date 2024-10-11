@@ -116,27 +116,38 @@ def simulate():
     [rx, ry] = r_pos
     curr = [-1, -1]
     short_distance = 3000
+    candidates = []
     for i in range(N - 1, -1, -1):
         for j in range(N - 1, -1, -1):
             if board[i][j] > 0:
                 distance = get_distance(r_pos, [i, j])
                 if distance < short_distance:
                     short_distance = distance
-                    curr = [i, j]
-    dx, dy = 0, 0
-    if curr[0] < rx:
-        dx = -1
-    elif curr[0] > rx:
-        dx = 1
-    if curr[1] < ry:
-        dy = -1
-    elif curr[1] > ry:
-        dy = 1
-    nx, ny = rx + dx, ry + dy
+                    candidates = [[i, j]]
+                elif distance == short_distance:
+                    candidates.append([i, j])
+
+    # 우선순위에 따라 대상 산타 선택
+    candidates.sort(key=lambda x: (-x[0], -x[1]))
+    curr = candidates[0]
+ # 루돌프의 이동 방향 선택
+    dx8 = [-1, -1, -1, 0, 0, 1, 1, 1]
+    dy8 = [-1, 0, 1, -1, 1, -1, 0, 1]
+    min_distance = get_distance(r_pos, curr)
+    best_dx, best_dy = 0, 0
+    for i in range(8):
+        nx, ny = rx + dx8[i], ry + dy8[i]
+        if in_board(nx, ny):
+            distance = get_distance([nx, ny], curr)
+            if distance < min_distance:
+                min_distance = distance
+                best_dx, best_dy = dx8[i], dy8[i]
+
+    nx, ny = rx + best_dx, ry + best_dy
 
     if nx == curr[0] and ny == curr[1]:
         index = find_santa_index(nx, ny)
-        hit(index, [dx, dy], 'rudolf')
+        hit(index, [best_dx, best_dy], 'rudolf')
 
     r_pos = [nx, ny]
     board[nx][ny] = -1
