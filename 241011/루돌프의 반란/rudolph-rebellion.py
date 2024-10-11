@@ -1,7 +1,4 @@
-3 5 2 1 1
-2 2
-1 1 3
-2 1 2[N, M, P, C, D] = list(map(int, input().split()))
+[N, M, P, C, D] = list(map(int, input().split()))
 
 # init board
 # rudolf -> -1
