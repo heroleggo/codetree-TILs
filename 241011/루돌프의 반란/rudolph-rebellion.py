@@ -58,8 +58,8 @@ def move(pos, direction, power):
     #     santa_stunned[pos] = -1 # 탈락 처리 후 함수 반환
     #     board[cx][cy] = 0 # 원래 있던 자리 비우기
     #     return
-
     stack = [pos]
+    visited = set()
 
     # 로직 구조
     # 0. 이동 시작 하는 산타 순서 스택에 push
@@ -70,7 +70,10 @@ def move(pos, direction, power):
     # 4. 계속 반복하다 보면, 빠져나와있음
     while True:
         # print('in searching movement, stack is : ', stack)
-        top = stack[len(stack) - 1]
+        top = stack[-1]
+        if top in visited:
+            break
+        visited.add(top)
         p = 1
         if top == pos:
             p = power
