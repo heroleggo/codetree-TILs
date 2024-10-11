@@ -94,6 +94,8 @@ def do_command(command):
     global answer, knights
     [idx, direction] = command
     knight = knights[idx]
+    if knight[4] == 0:
+        return
     # 각 직사각형 탐색
     parents = [[] for _ in range(N)]
     visited = [0 for _ in range(N)]
