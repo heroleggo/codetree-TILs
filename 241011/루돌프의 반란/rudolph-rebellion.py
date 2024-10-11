@@ -68,10 +68,8 @@ def move(pos, direction, power):
     # 2-2. nx, ny가 보드 바깥이라면 해당 번호의 산타를 탈락 처리하고 현재 위치를 0으로 변경한 후 중단
     # 3. 산타가 nx, ny 위치에 있는 경우 해당 nx, ny에 해당하는 산타 순서 push
     # 4. 계속 반복하다 보면, 빠져나와있음
-    cnt = 0
-    while True and cnt < 10:
+    while True:
         # print('in searching movement, stack is : ', stack)
-        cnt += 1
         top = stack[len(stack) - 1]
         p = 1
         if top == pos:
@@ -142,11 +140,11 @@ def hit(position, direction, by):
     global santa_score, santa_stunned
     if by == 'rudolf':
         santa_score[position] += C
-        santa_stunned[position] += 2
+        santa_stunned[position] = 2
         move(position, direction, C)
     elif by == 'santa':
         santa_score[position] += D
-        santa_stunned[position] += 2
+        santa_stunned[position] = 2
         [dx, dy] = direction
         dx, dy = -dx, -dy
         # 충돌 전 루돌프와의 거리 1, 루돌프 -> 산타 방향, 즉 산타 이동 반대방향으로 이미 1칸 이동한 것 과 같음
