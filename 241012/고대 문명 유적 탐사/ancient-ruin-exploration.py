@@ -23,6 +23,8 @@ def copy_array():
 
 def simulate():
     global ptr, board
+    # print_arr(board)
+    # print('current pointer : {}'.format(ptr))
     # 각 좌상단에서 회전 결과 별 최고 밸류를 저장할 곳
     max_board = []
 
@@ -45,8 +47,8 @@ def simulate():
                 if val > max_value:
                     max_value = val
                     max_board = processed_board
-                    pos = (i, j)
-                    deg = k
+                    # pos = (i, j)
+                    # deg = k
     if max_value == 0:
         max_board = copy_array()
     # print('[Searching finished]')
@@ -58,6 +60,7 @@ def simulate():
     # print('[Chaining started]')
     bfs_result = 0
     while True:
+        # print_arr(max_board)
         for i in range(5):
             for j in range(5):
                 if max_board[4 - j][i] == 0:
@@ -86,7 +89,6 @@ def in_board(r, c):
 def bfs(data):
     bfs_res = 0
     visited = [[0 for _ in range(5)] for _ in range(5)]
-    visited[0][0] = 1
     queue = deque()
     for i in range(5):
         for j in range(5):
