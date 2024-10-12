@@ -110,7 +110,7 @@ def hit(santa_index, direction, by):
             nx, ny = sx + power * real_direction[0], sy + power * real_direction[1]
         else:
             nx, ny = sx + real_direction[0], sy + real_direction[1]
-        if out_of_board(nx, ny) or board[nx][ny] == 0:
+        if out_of_board(nx, ny) or board[nx][ny] == 0 or (nx == sx and ny == sy):
             break
         # 다음 위치의 산타 번호를 스택에 넣기
         stack.append(board[nx][ny])
