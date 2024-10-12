@@ -33,8 +33,8 @@ def simulate():
     # deg = 0
 
     for k in [90, 180, 270]:
-        for i in range(3):
-            for j in range(3):
+        for j in range(3):
+            for i in range(3):
                 # 유적 복사
                 board_copy = copy_array()
                 rotated_data = rotate((i, j), k)
