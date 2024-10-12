@@ -51,7 +51,7 @@ def get_rudolf_direction():
     tx, ty = candidate[0]
 
     # calculate best direction
-    direction8 = [(0, 1), (0, -1), (1, 1), (1, 0), (1, -1), (-1, 1), (-1, 0), (-1, 1)]
+    direction8 = [(0, 1), (0, -1), (1, 1), (1, 0), (1, -1), (-1, -1), (-1, 0), (-1, 1)]
     best = (0, 0)
     dst = get_distance((rx, ry), (tx, ty))
     for d in direction8:
